@@ -1,35 +1,38 @@
+# The name of this view in Looker is "Office"
 view: office {
-  derived_table: {
-    sql:  select "1" as office_id,  "New York City" as office_name,  "10009" as office_zipcode,  "1" as head_salesperson_id, union all
-      select "2" as office_id,  "Dallas" as office_name,  "75001" as office_zipcode,  "2" as head_salesperson_id, union all
-      select "3" as office_id,  "Houston" as office_name,  "77001" as office_zipcode,  "3" as head_salesperson_id, union all
-      select "4" as office_id,  "Detroit" as office_name,  "48127" as office_zipcode,  "4" as head_salesperson_id, union all
-      select "5" as office_id,  "Miami" as office_name,  "33101" as office_zipcode,  "5" as head_salesperson_id, union all
-      select "6" as office_id,  "Orlando" as office_name,  "32789" as office_zipcode,  "6" as head_salesperson_id, union all
-      select "7" as office_id,  "Seattle" as office_name,  "98101" as office_zipcode,  "7" as head_salesperson_id, union all
-      select "8" as office_id,  "San Francisco" as office_name,  "94016" as office_zipcode,  "8" as head_salesperson_id, union all
-      select "9" as office_id,  "Los Angeles" as office_name,  "90005" as office_zipcode,  "9" as head_salesperson_id, union all
-      select "10" as office_id,  "Austin" as office_name,  "73301" as office_zipcode,  "10" as head_salesperson_id
-      ;;
-  }
+  # The sql_table_name parameter indicates the underlying database table
+  # to be used for all fields in this view.
+  sql_table_name: `alpine-dynamo-404312.looker_hackathon_q.office` ;;
+  # drill_fields: [office_id]
+
+  # This primary key is the unique key for this table in the underlying database.
+  # You need to define a primary key in a view in order to join to other views.
 
   dimension: office_id {
-    type:  string
-    sql:  ${TABLE}.office_id ;;
+    primary_key: yes
+    type: string
+    sql: ${TABLE}.office_id ;;
+  }
+    # Here's what a typical dimension looks like in LookML.
+    # A dimension is a groupable field that can be used to filter query results.
+    # This dimension will be called "Head Salesperson ID" in Explore.
+
+  dimension: head_salesperson_id {
+    type: string
+    sql: ${TABLE}.head_salesperson_id ;;
   }
 
   dimension: office_name {
-    type:  string
-    sql:  ${TABLE}.office_name ;;
+    type: string
+    sql: ${TABLE}.office_name ;;
   }
 
-  dimension: office_zip_code {
-    type: zipcode
+  dimension: office_zipcode {
+    type: string
     sql: ${TABLE}.office_zipcode ;;
   }
-
   measure: count {
-    type:  count
+    type: count
+    drill_fields: [office_id, office_name]
   }
-
 }

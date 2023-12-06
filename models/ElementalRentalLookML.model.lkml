@@ -73,6 +73,14 @@ explore: salesperson_staging {
   }
 }
 
-explore: salesperson {
+explore: salesperson {}
 
+explore: metadata {}
+
+explore: merged {
+  # join: metadata {
+  #   sql_on: ${merged.view_name} = ${metadata.view_name};;
+  #   type: left_outer
+  #   relationship: many_to_one
+  # }
 }
