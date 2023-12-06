@@ -37,6 +37,6 @@ view: metadata {
   }
   measure: count {
     type: count
-    drill_fields: [sql_table_name, view_name]
+    drill_fields: [view_name,sql_table_name]
   }
 }
