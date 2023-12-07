@@ -9,6 +9,7 @@ view: office {
   # You need to define a primary key in a view in order to join to other views.
 
   dimension: office_id {
+    description: "Office Id"
     primary_key: yes
     type: string
     sql: ${TABLE}.office_id ;;
@@ -18,16 +19,19 @@ view: office {
     # This dimension will be called "Head Salesperson ID" in Explore.
 
   dimension: head_salesperson_id {
+    description: "Head Salesperson Id"
     type: string
     sql: ${TABLE}.head_salesperson_id ;;
   }
 
   dimension: office_name {
+    description: "Office Location"
     type: string
     sql: ${TABLE}.office_name ;;
   }
 
   dimension: office_zipcode {
+    description: "Office Zipcode"
     type: string
     sql: ${TABLE}.office_zipcode ;;
   }

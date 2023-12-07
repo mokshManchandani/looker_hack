@@ -14,14 +14,17 @@ view: product {
   }
 
   dimension: product_id {
+    description: "Product Id"
     type: string
     sql: ${TABLE}.product_id ;;
   }
   dimension: product_name {
+    description: "Product Name"
     type: string
     sql: ${TABLE}.product_name ;;
   }
   dimension: product_hourly_price{
+    description: "Product Price"
     type: number
     value_format_name: usd_0
     sql: ${TABLE}.product_hourly_price ;;

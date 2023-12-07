@@ -25,16 +25,19 @@ view: customer {
   }
 
   dimension: customer_id {
+    description: "Customer Id"
     type:  string
     sql: ${TABLE}.customer_id ;;
   }
 
   dimension: customer_company_name {
+    description: "Name of Customer Company"
     type:  string
     sql: ${TABLE}.customer_company_name ;;
   }
 
   dimension: customer_type {
+    description: "Type of Customer"
     type:  string
     sql: ${TABLE}.customer_type ;;
   }

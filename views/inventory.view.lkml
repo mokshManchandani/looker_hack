@@ -205,16 +205,19 @@ view: inventory {
   }
 
   dimension: inventory_id {
+    description: "Inventory Id"
     type: string
     sql: ${TABLE}.inventory_id ;;
   }
 
   dimension: product_id {
+    description: "Product Id"
     type: string
     sql: ${TABLE}.product_id ;;
   }
 
   dimension: status {
+    description: "Status"
     type: string
     sql: ${TABLE}.status ;;
   }

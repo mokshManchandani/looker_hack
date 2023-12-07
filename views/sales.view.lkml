@@ -415,21 +415,25 @@ view: sales {
   }
 
   dimension: sales {
+    description: "Sales"
     type: number
     sql: ${TABLE}.sales ;;
   }
 
   dimension: office_id {
+    description: "Office Id"
     type: string
     sql: ${TABLE}.office_id ;;
   }
 
   dimension: transaction_id {
+    description: "Transaction Id"
     type: string
     sql: ${TABLE}.transaction_id ;;
   }
 
   dimension: salesperson_id {
+    description: "Id of Salesperson"
     type: string
     sql: ${TABLE}.salesperson_id ;;
   }

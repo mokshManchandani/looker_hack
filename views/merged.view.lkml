@@ -66,6 +66,10 @@ view: merged {
     type: string
     sql: ${TABLE}.sql_table_name ;;
   }
+  dimension: sql_table_name_value {
+    type: string
+    sql: CASE WHEN ${TABLE}.sql_table_name = "-" then "derived table" else ${sql_table_name} end ;;
+  }
 
   dimension: used_fields {
     type: string
@@ -95,14 +99,11 @@ view: merged {
     sql: ${TABLE}.dashboard_title ;;
     html:
     <div style="align-content: start; vertical-align:centre;">
-    <div style="height: 30px; margin-bottom: 15px">
-    <a style="color: #552;font-size: 40px;float: left;line-height: 30px;">›</a>
-    <a style="color: #0D98BA; font-size: 22px; padding: 5px 5px; float: left; line-height: 30px; font-weight: bold;">Dashboard Details</a>
+    <div style="height: 20px; margin-bottom: 5px">
     </div>
-    <div style="font-size:50%; line-height:2">
-    <p style="text-align:left"><b>Dashboard Name: </b>{{ rendered_value }}</p>
-    <p style="text-align:left"><b>Dashboard Description: </b>{{dashboard_description}}</p>
-    <p style="color: white;">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
+    <div style="font-size:30%; line-height:1">
+    <p style="text-align:left"><b>Dashboard Name</b>: {{ rendered_value }}</p>
+    <p style="text-align:left"><b>Dashboard Description</b>: {{dashboard_description}}</p>
     </div>
     </div>
           ;;
